@@ -44,18 +44,6 @@ const createGame = () => {
     method: 'POST',
     headers: {
       Authorization: `Token token=${store.user.token}`
-    },
-    data: {
-      game: {
-        id: '',
-        cells: ['', '', '', '', '', '', '', '', ''],
-        over: false,
-        player_x: {
-          id: '',
-          email: ''
-        },
-        player_o: null
-      }
     }
   })
 }
@@ -72,7 +60,7 @@ const getAllGames = () => {
 
 const getAGame = formData => {
   return $.ajax({
-    url: config.apiUrl + '/games' + formData.game.id,
+    url: config.apiUrl + '/games/' + formData.game.id,
     method: 'GET',
     headers: {
       Authorization: `Token token=${store.user.token}`

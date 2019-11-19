@@ -9,5 +9,6 @@ const events = require('./events.js')
 
 $(() => {
   $('.bs').on('click', events.placeMarker)
+  // $('.bs').on('click', events.boardArray)
   events.addHandlers()
 })

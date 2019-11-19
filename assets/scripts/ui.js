@@ -37,7 +37,7 @@ const onSignInFailure = () => {
 }
 
 const onChangePasswordSuccess = () => {
-  onSuccess('You have successfully changed your password')
+  onSuccess('You have successfully changed your password!')
 }
 
 const onChangePasswordFailure = () => {
@@ -55,6 +55,23 @@ const onSignOutFailure = () => {
   onFailure('Sign out failed!')
 }
 
+const onCreateGameSuccess = gameData => {
+  onSuccess('You have started a new game!')
+  store.game = gameData.game
+}
+
+const onCreateGameFailure = () => {
+  onFailure('Failed to create new game!')
+}
+
+const onUpdateGameSuccess = () => {
+  onSuccess('Game data has been updated!')
+}
+
+const onUpdateGameFailure = () => {
+  onFailure('Failed to update game data!')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -63,5 +80,9 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onCreateGameSuccess,
+  onCreateGameFailure,
+  onUpdateGameSuccess,
+  onUpdateGameFailure
 }
