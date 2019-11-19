@@ -39,6 +39,10 @@ const sendToBoardArray = (bsNumId, player) => {
   boardArray.splice(bsNumId, 1, player)
 }
 
+const disableListeners = event => {
+  $('.bs').removeEventListener('click', placeMarker)
+}
+
 /*
 const winningCombos = [
   [0, 1, 2],
@@ -59,34 +63,49 @@ const checkForWin = boardArray => {
     disableListeners()
   } else if (boardArray[3] === 'x' && boardArray[4] === 'x' && boardArray[5] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[6] === 'x' && boardArray[7] === 'x' && boardArray[8] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[0] === 'x' && boardArray[4] === 'x' && boardArray[8] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[2] === 'x' && boardArray[4] === 'x' && boardArray[6] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[0] === 'x' && boardArray[3] === 'x' && boardArray[6] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[1] === 'x' && boardArray[4] === 'x' && boardArray[7] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[2] === 'x' && boardArray[5] === 'x' && boardArray[8] === 'x') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[0] === 'o' && boardArray[1] === 'o' && boardArray[2] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[3] === 'o' && boardArray[4] === 'o' && boardArray[5] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[6] === 'o' && boardArray[7] === 'o' && boardArray[8] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[0] === 'o' && boardArray[4] === 'o' && boardArray[8] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[2] === 'o' && boardArray[4] === 'o' && boardArray[6] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[0] === 'o' && boardArray[3] === 'o' && boardArray[6] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   } else if (boardArray[1] === 'o' && boardArray[4] === 'o' && boardArray[7] === 'o') {
     $('.results').html('x wins')
+    disableListeners()
   } else if (boardArray[2] === 'o' && boardArray[5] === 'o' && boardArray[8] === 'o') {
     $('.results').html('o wins')
+    disableListeners()
   }
 }
 
@@ -136,7 +155,6 @@ const placeMarker = event => {
 
 
 // this stops user from clicking board after game has ended
-const disableListeners = () => $('.bs').removeEventListener('click', placeMarker)
 
 /*
 In order to win the game, player must have 3 of the same markers in a row
