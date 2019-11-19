@@ -1,6 +1,7 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
+const store = require('./store')
 // when player clicks a board space, value of that element will be changed
 
 let player = 'x'
@@ -18,15 +19,42 @@ const switchPlayer = () => {
 //   return index !== ''
 // }
 
-const isDraw = index => {
-  return index !== ''
-}
+// const isDraw = index => {
+//   return index !== ''
+// }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+
+const gameStart = () => {
+  const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  return boardArray
+}
+
+
+// const checkForDraw = boardArray => {
+//   if ((boardArray[0] === 'x' || 'o') && (boardArray[1] === 'x' || 'o') && (boardArray[2] === 'x' || 'o') && (boardArray[3] === 'x' || 'o') && (boardArray[4] === 'x' || 'o') && (boardArray[5] === 'x' || 'o') && (boardArray[6] === 'x' || 'o') && (boardArray[7] === 'x' || 'o') && (boardArray[8] === 'x' || 'o')) {
+//     $('.draw-bar').text('DRAW')
+//   }
+// }
 
 const checkForDraw = () => {
   console.log('check for draw here')
 }
+
+// const checkForDraw = boardArray => {
+//   if (boardArray.every(i => i !== '')) {
+//     $('draw-bar').text('draw').show()
+//   }
+// }
+
+// const startGame = value => {
+//   if (value === true) {
+//     const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+//     const player = 'x'
+//   }
+// }
+
 //   if (boardArray.every(isDraw)) {
 //     $('.results').text('No winner')
 //     disableListeners()
@@ -39,8 +67,9 @@ const sendToBoardArray = (bsNumId, player) => {
   boardArray.splice(bsNumId, 1, player)
 }
 
-const disableListeners = event => {
-  $('.bs').removeEventListener('click', placeMarker)
+const disableListeners = () => {
+  $('.bs').hide()
+  // clearBoard(boardArray)
 }
 
 /*
@@ -55,7 +84,6 @@ const winningCombos = [
   [2, 5, 8]
 ]
 */
-const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 const checkForWin = boardArray => {
   if (boardArray[0] === 'x' && boardArray[1] === 'x' && boardArray[2] === 'x') {
@@ -106,6 +134,8 @@ const checkForWin = boardArray => {
   } else if (boardArray[2] === 'o' && boardArray[5] === 'o' && boardArray[8] === 'o') {
     $('.results').html('o wins')
     disableListeners()
+  } else {
+    checkForDraw(boardArray)
   }
 }
 
@@ -113,20 +143,18 @@ const placeMarker = event => {
   const bsId = event.target.id
   const bsNumId = () => bsId.replace('bs', '')
   // const bsNumId = () => Number.parseInt(bsId.replace('bs', ''))
-  console.log('event target is', event.target)
-  console.log('bsId is', bsId)
-  console.log('bsNumId is', bsNumId())
+  // console.log('event target is', event.target)
+  // console.log('bsId is', bsId)
+  // console.log('bsNumId is', bsNumId())
   // console.log(player + "'s turn'")
-  console.log('board space click works')
-  // sendToBoardArray(bsNumId, player)
-
+  // console.log('board space click works')
   if ((player === 'x') && ($(event.target).text() === '')) {
     $(event.target).html('x')
     $('.results').html('Turn: O')
     sendToBoardArray(bsNumId(), player)
     console.log('BOARD ARRAY IS', boardArray)
     checkForWin(boardArray)
-    checkForDraw()
+    // checkForDraw(boardArray)
     switchPlayer()
   } else if ((player === 'o') && ($(event.target).text() === '')) {
     $(event.target).html('o')
@@ -134,27 +162,21 @@ const placeMarker = event => {
     sendToBoardArray(bsNumId(), player)
     console.log('BOARD ARRAY IS', boardArray)
     checkForWin(boardArray)
-    checkForDraw()
+    // checkForDraw(boardArray)
     switchPlayer()
   } else {
     $('.results').text('Invalid move!  Click an empty box.')
   }
 }
 
-
-
 // const winningCombo = (boardArray) => {
 //   boardArray.every(bsId => bsId.innerText === boardArray[0].innerText && bsId.innerText !== '')
 // }
 
-
-
+// stops user from clicking board after game has ended
 // const endGame = () => {
 //   disableListeners()
 // }
-
-
-// this stops user from clicking board after game has ended
 
 /*
 In order to win the game, player must have 3 of the same markers in a row
@@ -178,11 +200,9 @@ Winning combinations:
 
 when a player inputs an X or an O, that value is .push-ed into the board array?
 
-// arrays to hold player moves; start as undefined, based on moves they make, value will be inputted into the corresponding playerOne/TwoMoves[i]
-// const playerOneMoves = []
-// const playerTwoMoves = []
-
-iterate through each player array and if any of the winning combinations are present in either array, that player will win.
+// const winningCombo = (boardArray) => {
+//   boardArray.every(bsId => bsId.innerText === boardArray[0].innerText && bsId.innerText !== '')
+// }
 */
 
 // API EVENTS BELOW:
@@ -235,6 +255,13 @@ const onSignOut = event => {
 const onCreateGame = event => {
   event.preventDefault()
   console.log('create game works')
+  $('.bs')
+    .html('')
+    .show()
+  $('.results').html(' ')
+  // store.game.clear(store.game)
+  gameStart(boardArray)
+  console.log(boardArray)
   // NEED TO INCLUDE GAME START HERE?
   api.createGame()
     .then(ui.onCreateGameSuccess)
@@ -255,6 +282,11 @@ const onGetAGame = event => {
   api.getAGame()
     .then(ui.onGetAGameSuccess)
     .catch(ui.onGetAGameFailure)
+}
+const onUpdateMove = event => {
+api.update(id, player)
+    .then(ui.onUpdateGameSuccess)
+    .catch(ui.onUpdateGameFailure)
 }
 
 const addHandlers = event => {
@@ -277,6 +309,7 @@ module.exports = {
   onSignOut,
   onCreateGame,
   onGetAllGames,
-  onGetAGame
+  onGetAGame,
+  onUpdateMove
   // checkForWin
 }

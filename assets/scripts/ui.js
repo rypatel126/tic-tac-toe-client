@@ -1,5 +1,6 @@
 
 const store = require('./store.js')
+// const events = require('./events.js')
 
 const onSuccess = message => {
   $('#results')
@@ -18,60 +19,62 @@ const onFailure = message => {
 }
 
 const onSignUpSuccess = () => {
-  onSuccess('You have successfully signed up!  Now, sign in!')
+  onSuccess($('.results').text('You have successfully signed up!  Now, sign in!'))
 }
 
 const onSignUpFailure = () => {
-  onFailure('Sign up failed!')
+  onFailure($('.results').text('Sign up failed!'))
 }
 
 const onSignInSuccess = responseData => {
   store.user = responseData.user
   console.log(store)
-  onSuccess('You have successfully signed in!')
+  onSuccess($('.results').text('You have successfully signed in!'))
   $('.after-auth').show()
   $('.before-auth').hide()
 }
 
 const onSignInFailure = () => {
-  onFailure('Sign in failed!')
+  onFailure($('.results').text('Sign in failed!'))
 }
 
 const onChangePasswordSuccess = () => {
-  onSuccess('You have successfully changed your password!')
+  onSuccess($('.results').text('You have successfully changed your password!'))
 }
 
 const onChangePasswordFailure = () => {
-  onFailure('Change password failed!')
+  onFailure($('.results').text('Change password failed!'))
 }
 
 const onSignOutSuccess = () => {
-  onSuccess('You have successfully signed out!')
+  onSuccess($('.results').text('You have successfully signed out!'))
   store.user = {} // now store.js object will revert back to being empty
   $('.before-auth').show()
   $('.after-auth').hide()
 }
 
 const onSignOutFailure = () => {
-  onFailure('Sign out failed!')
+  onFailure($('.results').text('Sign out failed!'))
 }
 
 const onCreateGameSuccess = gameData => {
-  onSuccess('You have started a new game!')
+  onSuccess($('.results').text('You have started a new game!'))
+  store.game.cell = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   store.game = gameData.game
+  // events.boardArray = []
   $('.game-board').show()
 }
 
 const onCreateGameFailure = () => {
-  onFailure('Failed to create new game!')
+  onFailure($('.results').text('Failed to create new game!'))
 }
 
 const onUpdateGameSuccess = () => {
-  onSuccess('Game data has been updated!')
+  onSuccess($('.results').text('Game data has been updated!'))
 }
 
 const onUpdateGameFailure = () => {
-  onFailure('Failed to update game data!')
+  onFailure($('.results').text('Failed to update game data!'))
 }
 
 module.exports = {

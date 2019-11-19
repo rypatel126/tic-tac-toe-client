@@ -60,7 +60,7 @@ const getAllGames = () => {
 
 const getAGame = formData => {
   return $.ajax({
-    url: config.apiUrl + '/games/' + formData.game.id,
+    url: config.apiUrl + '/games/' + store.game.id,
     method: 'GET',
     headers: {
       Authorization: `Token token=${store.user.token}`
