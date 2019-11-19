@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <header class="nav-bar">
+
         <h1>TIC TAC TOE</h1>
 
       <section class="before-auth">
@@ -31,6 +31,7 @@
         </form>
       </section>
       <section class="after-auth">
+      <section>
         <h2>Change Password</h2>
         <form id="change-password">
           <input type="password" name="passwords[old]" placeholder="Old Password">
@@ -46,8 +47,16 @@
         <button class="btn btn-primary">Start Game</button>
       </form>
       </section>
-      </header>
-      <section class="results"></section>
+
+      <form id="get-a-game">
+        <button class="btn btn-primary">Get a game</button>
+        <input type="text" name='game-id' placeholder="Game ID">
+      </form>
+      <form id="get-all-games">
+        <button class="btn btn-primary">Get all games</button>
+      </form>
+      <section class="game-board">
+      <section class="results" id="status-bar"></section>
       <section class="container-fluid">
         <div class="row h-100 board">
           <div class="col-4 bs" id="bs0"></div>
@@ -61,6 +70,9 @@
           <div class="col-4 bs" id="bs8"></div>
         </div>
       </section>
+    </section>
+    </section>
+    </body>
         <!-- <div class="container">
           <div class="bs" id="bs0"></div>
           <div class="bs" id="bs1"></div>

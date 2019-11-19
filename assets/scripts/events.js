@@ -3,8 +3,6 @@ const ui = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
 // when player clicks a board space, value of that element will be changed
 
-console.error('Page has reloaded')
-
 let player = 'x'
 
 // function that switches between players
@@ -16,82 +14,32 @@ const switchPlayer = () => {
   }
 }
 
-// '', '', '', '', '', '', '', ''
-
-// const boardArray = []
-// const boardArrayInput = () => {
-//   boardArray.splice(bsId, 1, player)
+// const draw = index => {
+//   return index !== ''
 // }
+
+const isDraw = index => {
+  return index !== ''
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+
+const checkForDraw = () => {
+  console.log('check for draw here')
+}
+//   if (boardArray.every(isDraw)) {
+//     $('.results').text('No winner')
+//     disableListeners()
+//   } else {
+//     $('.results').text(player, "'s turn'")
+//   }
+// }
+
 const sendToBoardArray = (bsNumId, player) => {
   boardArray.splice(bsNumId, 1, player)
 }
 
-// const boardArray = () => {
-//   Array.from(document.getElementsByClassName('.col'))
-// }
-// console.log('BOARD ARRAY IS', boardArray())
-
-// let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-//
-//
-// const sendToBoardArray = (bsNumId, player) => {
-//   boardArray.splice(bsNumId, 1, player)
-// }
-
-const placeMarker = event => {
-
-  const bsId = event.target.id
-  const bsNumId = () => Number.parseInt(bsId.replace('bs', ''))
-  console.log('event target is', event.target)
-  console.log('bsId is', bsId)
-  console.log('bsNumId is', bsNumId())
-  console.log(player + "'s turn'")
-  // const bsNum = (bsId) => { Number.parseInt(bsId.id.replace('bs', '')) }
-  console.log('board space click works')
-  // sendToBoardArray(bsNumId, player)
-  // // const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  // console.log('BOARD ARRAY IS', board)
-  // const sendToBoardArray = (bsNumId, player) => {
-  //   board.splice(bsNumId, 1, player)
-  // }
-
-  // const board = []
-
-  // sendToBoardArray(bsNumId, player)
-  // const boardArrayInput = (bsId, player) => {
-  //   boardArray.splice(bsId, 1, player)
-  // }
-
-  // const bsNumId = (bsId) => {
-  //   Number.parseInt(bsId.id.replace('bs', ''))
-  // }
-
-  if ((player === 'x') && ($(event.target).text() === '')) {
-    $(event.target).html('x')
-    $('.results').html('Turn: O')
-    sendToBoardArray(bsNumId, player)
-    switchPlayer()
-  } else if ((player === 'o') && ($(event.target).text() === '')) {
-    $(event.target).html('o')
-    $('.results').html('Turn: X')
-    sendToBoardArray(bsNumId, player)
-    switchPlayer()
-    // const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-    console.log('BOARD ARRAY IS', boardArray)
-  } else {
-    $('.results').text('Invalid move!  Click an empty box.')
-  }
-  // sendToBoardArray(bsNumId, player)
-  // // const board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  // console.log('BOARD ARRAY IS', board)
-}
-
-const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
-
-
-
-
+/*
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -102,15 +50,89 @@ const winningCombos = [
   [1, 4, 7],
   [2, 5, 8]
 ]
+*/
+const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-// const bsId = (bsEl) => Number.parseInt(bsEl.id.replace('bs', ''))
-const winningCombo = (boardArray) => {
-  boardArray.every(bsId => bsId.innerText === boardArray[0].innerText && bsId.innerText !== '')
+const checkForWin = boardArray => {
+  if (boardArray[0] === 'x' && boardArray[1] === 'x' && boardArray[2] === 'x') {
+    $('.results').html('x wins')
+    disableListeners()
+  } else if (boardArray[3] === 'x' && boardArray[4] === 'x' && boardArray[5] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[6] === 'x' && boardArray[7] === 'x' && boardArray[8] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[0] === 'x' && boardArray[4] === 'x' && boardArray[8] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[2] === 'x' && boardArray[4] === 'x' && boardArray[6] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[0] === 'x' && boardArray[3] === 'x' && boardArray[6] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[1] === 'x' && boardArray[4] === 'x' && boardArray[7] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[2] === 'x' && boardArray[5] === 'x' && boardArray[8] === 'x') {
+    $('.results').html('x wins')
+  } else if (boardArray[0] === 'o' && boardArray[1] === 'o' && boardArray[2] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[3] === 'o' && boardArray[4] === 'o' && boardArray[5] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[6] === 'o' && boardArray[7] === 'o' && boardArray[8] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[0] === 'o' && boardArray[4] === 'o' && boardArray[8] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[2] === 'o' && boardArray[4] === 'o' && boardArray[6] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[0] === 'o' && boardArray[3] === 'o' && boardArray[6] === 'o') {
+    $('.results').html('o wins')
+  } else if (boardArray[1] === 'o' && boardArray[4] === 'o' && boardArray[7] === 'o') {
+    $('.results').html('x wins')
+  } else if (boardArray[2] === 'o' && boardArray[5] === 'o' && boardArray[8] === 'o') {
+    $('.results').html('o wins')
+  }
 }
 
-const endGame = () => {
-  disableListeners()
+const placeMarker = event => {
+  const bsId = event.target.id
+  const bsNumId = () => bsId.replace('bs', '')
+  // const bsNumId = () => Number.parseInt(bsId.replace('bs', ''))
+  console.log('event target is', event.target)
+  console.log('bsId is', bsId)
+  console.log('bsNumId is', bsNumId())
+  // console.log(player + "'s turn'")
+  console.log('board space click works')
+  // sendToBoardArray(bsNumId, player)
+
+  if ((player === 'x') && ($(event.target).text() === '')) {
+    $(event.target).html('x')
+    $('.results').html('Turn: O')
+    sendToBoardArray(bsNumId(), player)
+    console.log('BOARD ARRAY IS', boardArray)
+    checkForWin(boardArray)
+    checkForDraw()
+    switchPlayer()
+  } else if ((player === 'o') && ($(event.target).text() === '')) {
+    $(event.target).html('o')
+    $('.results').html('Turn: X')
+    sendToBoardArray(bsNumId(), player)
+    console.log('BOARD ARRAY IS', boardArray)
+    checkForWin(boardArray)
+    checkForDraw()
+    switchPlayer()
+  } else {
+    $('.results').text('Invalid move!  Click an empty box.')
+  }
 }
+
+
+
+// const winningCombo = (boardArray) => {
+//   boardArray.every(bsId => bsId.innerText === boardArray[0].innerText && bsId.innerText !== '')
+// }
+
+
+
+// const endGame = () => {
+//   disableListeners()
+// }
 
 
 // this stops user from clicking board after game has ended

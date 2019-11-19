@@ -35,8 +35,15 @@ body {
   border-bottom: 0;
 }
 
+#status-bar {
+  background-color: gray;
+  height: 50px;
+  text-align: center;
+  font-size: 20px
+}
 
-// <--------------------->
+
+// <--------pre-bootstrap stlying below------------->
 
 // // board styling
 // .container {

@@ -1,3 +1,4 @@
+
 const store = require('./store.js')
 
 const onSuccess = message => {
@@ -58,6 +59,7 @@ const onSignOutFailure = () => {
 const onCreateGameSuccess = gameData => {
   onSuccess('You have started a new game!')
   store.game = gameData.game
+  $('.game-board').show()
 }
 
 const onCreateGameFailure = () => {
