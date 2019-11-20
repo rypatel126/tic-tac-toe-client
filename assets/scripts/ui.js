@@ -59,7 +59,8 @@ const onSignOutFailure = () => {
 
 const onCreateGameSuccess = gameData => {
   onSuccess($('.results').text('You have started a new game!'))
-  store.game.cell = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  // store.game.cell = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  // boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   store.game = gameData.game
   // events.boardArray = []
   $('.game-board').show()

@@ -254,11 +254,14 @@ const onSignOut = event => {
 
 const onCreateGame = event => {
   event.preventDefault()
-  console.log('create game works')
+  console.log('create game button works')
+  // boardArray.clear(boardArray)
   $('.bs')
     .html('')
     .show()
+    // .clear(boardArray)
   $('.results').html(' ')
+  // boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   // store.game.clear(store.game)
   gameStart(boardArray)
   console.log(boardArray)
@@ -276,13 +279,15 @@ const onGetAllGames = event => {
     .catch(ui.onGetAllGamesFailure)
 }
 
-const onGetAGame = event => {
-  event.preventDefault()
-  console.log('get a game works')
-  api.getAGame()
-    .then(ui.onGetAGameSuccess)
-    .catch(ui.onGetAGameFailure)
-}
+// getting a single is not required?
+// const onGetAGame = event => {
+//   event.preventDefault()
+//   console.log('get a game works')
+//   api.getAGame()
+//     .then(ui.onGetAGameSuccess)
+//     .catch(ui.onGetAGameFailure)
+// }
+
 const onUpdateMove = event => {
 api.update(id, player)
     .then(ui.onUpdateGameSuccess)
@@ -296,7 +301,7 @@ const addHandlers = event => {
   $('#sign-out').on('submit', onSignOut)
   $('#create-game').on('click', onCreateGame)
   $('#get-all-games').on('click', onGetAllGames)
-  $('#get-a-game').on('click', onGetAGame)
+  // $('#get-a-game').on('click', onGetAGame)
 }
 
 module.exports = {
@@ -309,7 +314,7 @@ module.exports = {
   onSignOut,
   onCreateGame,
   onGetAllGames,
-  onGetAGame,
+  // onGetAGame,
   onUpdateMove
   // checkForWin
 }
