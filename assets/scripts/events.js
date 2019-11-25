@@ -24,10 +24,12 @@ const switchPlayer = () => {
 // }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-const gameStart = () => {
-  const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+const gameStart = boardArray => {
+  for (let i = 0; i < 10; i++) {
+    i = ' '
+  }
   return boardArray
 }
 
@@ -38,8 +40,12 @@ const gameStart = () => {
 //   }
 // }
 
-const checkForDraw = () => {
-  console.log('check for draw here')
+const checkForDraw = boardArray => {
+  for (let i = 0; i < boardArray.length; i++) {
+    if (boardArray !== '') {
+      console.log('game is a draw')
+    }
+  }
 }
 
 // const checkForDraw = boardArray => {
@@ -261,7 +267,7 @@ const onCreateGame = event => {
     .show()
     // .clear(boardArray)
   $('.results').html(' ')
-  // boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  // let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   // store.game.clear(store.game)
   gameStart(boardArray)
   console.log(boardArray)

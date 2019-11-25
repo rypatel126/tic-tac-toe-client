@@ -11,4 +11,6 @@ $(() => {
   $('.bs').on('click', events.placeMarker)
   // $('.bs').on('click', events.boardArray)
   events.addHandlers()
+  $('.after-auth').hide()
+  $('.game-board').hide()
 })
