@@ -26,12 +26,12 @@ const switchPlayer = () => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
 let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-const gameStart = boardArray => {
-  for (let i = 0; i < 10; i++) {
-    i = ' '
-  }
-  return boardArray
-}
+// const gameStart = boardArray => {
+//   for (let i = 0; i < 10; i++) {
+//     i = ' '
+//   }
+//   return boardArray
+// }
 
 
 // const checkForDraw = boardArray => {
@@ -54,12 +54,10 @@ const checkForDraw = boardArray => {
 //   }
 // }
 
-// const startGame = value => {
-//   if (value === true) {
-//     const boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-//     const player = 'x'
-//   }
-// }
+const gameStart = value => {
+    boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    player = 'x'
+}
 
 //   if (boardArray.every(isDraw)) {
 //     $('.results').text('No winner')
@@ -269,7 +267,7 @@ const onCreateGame = event => {
   $('.results').html(' ')
   // let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   // store.game.clear(store.game)
-  gameStart(boardArray)
+  gameStart()
   console.log(boardArray)
   // NEED TO INCLUDE GAME START HERE?
   api.createGame()
