@@ -69,7 +69,7 @@ const getAllGames = () => {
 //   })
 // }
 
-const updateMove = (id, player) => {
+const updateMove = (index, value) => {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
@@ -79,8 +79,8 @@ const updateMove = (id, player) => {
     data: {
       game: {
         cell: {
-          index: id,
-          value: player
+          index: index,
+          value: value
         },
         over: false
       }

@@ -196,6 +196,7 @@ const placeMarker = event => {
     console.log('BOARD ARRAY IS', boardArray)
     checkForDraw(boardArray)
     checkForWin(boardArray)
+    onUpdateMove()
     // checkForDraw(boardArray)
     switchPlayer()
   } else if ((player === 'o') && ($(event.target).text() === '')) {
@@ -205,6 +206,7 @@ const placeMarker = event => {
     console.log('BOARD ARRAY IS', boardArray)
     checkForDraw(boardArray)
     checkForWin(boardArray)
+    onUpdateMove()
     // checkForDraw(boardArray)
     switchPlayer()
   } else {
@@ -332,9 +334,10 @@ const onGetAllGames = event => {
 // }
 
 const onUpdateMove = event => {
-api.update(bsId, player)
+api.updateMove()
     .then(ui.onUpdateGameSuccess)
     .catch(ui.onUpdateGameFailure)
+  console.log('onUpdateMove works')
 }
 
 const addHandlers = event => {

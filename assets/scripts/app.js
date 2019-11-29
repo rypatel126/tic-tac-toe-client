@@ -13,4 +13,5 @@ $(() => {
   events.addHandlers()
   $('.after-auth').hide()
   $('.game-board').hide()
+  $('.status').text('')
 })
