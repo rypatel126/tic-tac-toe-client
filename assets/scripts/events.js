@@ -24,7 +24,7 @@ const switchPlayer = () => {
 // }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 // const gameStart = boardArray => {
 //   for (let i = 0; i < 10; i++) {
@@ -40,13 +40,43 @@ let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 //   }
 // }
 
+// const isNotEmpty = (bs) => bs !== ''
+
+// const checkForDraw = () => {
+//   for (let i = 0; i < boardArray.length; i++) {
+//     if (boardArray[i] !== '') {
+//       console.log('draw')
+//       $('draw-bar').text('draw')
+//     }
+//   }
+// }
+
+// const drawGameTrue = boardSpace => {
+//   return boardSpace !== ''
+// }
+
+// const checkForDraw = boardArray => {
+//   if (boardArray.every(bs => bs !== '')) {
+//     console.log('draw')
+//     $('.results').text('Draw')
+//   }
+// }
+
+// const checkForDraw = boardArray => {
+//   if (boardArray.every(isNotEmpty) === true) {
+//     console.log('DRAW WORKS')
+//     $('.results').text('Draw')
+//   }
+// }
+
 const checkForDraw = boardArray => {
-  for (let i = 0; i < boardArray.length; i++) {
-    if (boardArray !== '') {
-      console.log('game is a draw')
-    }
+  if ((boardArray[0] !== ' ') && (boardArray[1] !== ' ') && (boardArray[2] !== ' ') && (boardArray[3] !== ' ') && (boardArray[4] !== ' ') && (boardArray[5] !== ' ') && (boardArray[6] !== ' ') && (boardArray[7] !== ' ') && (boardArray[8] !== ' ')) {
+    console.log('DRAW WORKS')
+    $('.draw-bar').html('Draw').show()
+    $('.results').hide()
   }
 }
+
 
 // const checkForDraw = boardArray => {
 //   if (boardArray.every(i => i !== '')) {
@@ -54,9 +84,13 @@ const checkForDraw = boardArray => {
 //   }
 // }
 
+
+// GAMEBOARD FINALLY CLEARS!
 const gameStart = value => {
-    boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-    player = 'x'
+  boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+  player = 'x'
+  $('.draw-bar').hide()
+  $('.results').show()
 }
 
 //   if (boardArray.every(isDraw)) {
@@ -138,10 +172,13 @@ const checkForWin = boardArray => {
   } else if (boardArray[2] === 'o' && boardArray[5] === 'o' && boardArray[8] === 'o') {
     $('.results').html('o wins')
     disableListeners()
-  } else {
-    checkForDraw(boardArray)
   }
+  // else if (checkForDraw === true) {
+  //   console.log('DRAW GAME WORKS')
+  //   $('.results').html('draw')
+  // }
 }
+// ((boardArray[0] !== ' ') && (boardArray[1] !== ' ') && (boardArray[2] !== ' ') && (boardArray[3] !== ' ') && (boardArray[4] !== ' ') && (boardArray[5] !== ' ') && (boardArray[6] !== ' ') && (boardArray[7] !== ' ') && (boardArray[8] !== ' '))
 
 const placeMarker = event => {
   const bsId = event.target.id
@@ -157,6 +194,7 @@ const placeMarker = event => {
     $('.results').html('Turn: O')
     sendToBoardArray(bsNumId(), player)
     console.log('BOARD ARRAY IS', boardArray)
+    checkForDraw(boardArray)
     checkForWin(boardArray)
     // checkForDraw(boardArray)
     switchPlayer()
@@ -165,6 +203,7 @@ const placeMarker = event => {
     $('.results').html('Turn: X')
     sendToBoardArray(bsNumId(), player)
     console.log('BOARD ARRAY IS', boardArray)
+    checkForDraw(boardArray)
     checkForWin(boardArray)
     // checkForDraw(boardArray)
     switchPlayer()
@@ -293,7 +332,7 @@ const onGetAllGames = event => {
 // }
 
 const onUpdateMove = event => {
-api.update(id, player)
+api.update(bsId, player)
     .then(ui.onUpdateGameSuccess)
     .catch(ui.onUpdateGameFailure)
 }
