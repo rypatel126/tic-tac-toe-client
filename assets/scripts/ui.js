@@ -70,6 +70,15 @@ const onCreateGameFailure = () => {
   onFailure($('.results').text('Failed to create new game!'))
 }
 
+const onGetAllGamesSuccess = store => {
+  console.log('games played', store.games.length)
+  $('.results').html('Total games played:', store.games.length).show()
+}
+
+const onGetAllGamesFailure = () => {
+  onFailure($('.results').text('Failed to get game data!'))
+}
+
 const onUpdateGameSuccess = () => {
   onSuccess($('.results').text('Game data has been updated!'))
 }
@@ -90,5 +99,7 @@ module.exports = {
   onCreateGameSuccess,
   onCreateGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  onGetAllGamesSuccess,
+  onGetAllGamesFailure
 }

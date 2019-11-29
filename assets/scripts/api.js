@@ -58,16 +58,16 @@ const getAllGames = () => {
   })
 }
 
-const getAGame = formData => {
-  return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
-    method: 'GET',
-    headers: {
-      Authorization: `Token token=${store.user.token}`
-    },
-    data: formData.game.id // NEED TO REVISIT THIS
-  })
-}
+// const getAGame = formData => {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Token token=${store.user.token}`
+//     },
+//     data: formData.game.id // NEED TO REVISIT THIS
+//   })
+// }
 
 const updateMove = (id, player) => {
   return $.ajax({
@@ -95,6 +95,6 @@ module.exports = {
   signOut,
   createGame,
   getAllGames,
-  getAGame,
+  // getAGame,
   updateMove
 }
