@@ -30,7 +30,7 @@ const onSignUpFailure = () => {
 
 const onSignInSuccess = responseData => {
   store.user = responseData.user
-  console.log(store)
+  // console.log(store)
   onSuccess($('.status').text('You have successfully signed in!'))
   $('.after-auth').show()
   $('.before-auth').hide()
@@ -73,7 +73,7 @@ const onCreateGameFailure = () => {
 }
 
 const onGetAllGamesSuccess = store => {
-  console.log('games played', store.games.length)
+  // console.log('games played', store.games.length)
   $('.results').html('Total games played: ' + store.games.length)
 }
 

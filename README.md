@@ -16,7 +16,7 @@ as a playing-user, I want to alternate between X and O without skipping turns
 as a signed-in user, I want to be able to view my total games played (also need to show what each game looked like?)
 as a signed-in playing-user, I want to be able to clear the board after sign out
 
-Note: Future versions will hopefully more closely match the initial wire frames.  The layout and formate also need to be addressed in the future; currently the page only reflects the most minimalistic of stylings.
+Note: Future versions will hopefully more closely match the initial wire frames.  The layout and format also need to be addressed in the future; currently the page only reflects the most minimalistic of stylings.
 
 Wire Frames:
 https://i.imgur.com/mHIp3Rj.jpg
