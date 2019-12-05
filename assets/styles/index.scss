@@ -2,8 +2,13 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  display: grid;
-  min-height: 100vh;
+//   display: grid;
+//   min-height: 100vh;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+
 }
 
 .container-fluid {
@@ -51,6 +56,36 @@ body {
 
 .status {
   height: 50px;
+}
+
+h1 {
+  height: auto;
+  text-decoration: underline;
+  padding: 30px;
+}
+
+.instructions {
+  text-align: justify center;
+}
+
+#sign-up {
+  padding: 30px;
+}
+
+#sign-in {
+  padding: 30px;
+}
+
+#change-password {
+  padding: 30px;
+}
+
+#sign-out {
+  padding: 30px;
+}
+
+#create-game {
+  padding: 30px;
 }
 
 // <--------pre-bootstrap stlying below------------->

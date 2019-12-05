@@ -7,6 +7,7 @@ const onSuccess = message => {
     .removeClass('failure')
     .addClass('success')
     .text(message)
+    .css('background-color', 'green')
   $('form').trigger('reset')
 }
 
@@ -15,6 +16,7 @@ const onFailure = message => {
     .removeClass('success')
     .addClass('failure')
     .text(message)
+    .css('background-color', 'red')
   $('form').trigger('reset')
 }
 
@@ -72,7 +74,7 @@ const onCreateGameFailure = () => {
 
 const onGetAllGamesSuccess = store => {
   console.log('games played', store.games.length)
-  $('.status').html('Total games played: ' + store.games.length)
+  $('.results').html('Total games played: ' + store.games.length)
 }
 
 const onGetAllGamesFailure = () => {

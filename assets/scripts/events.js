@@ -1,4 +1,4 @@
-const api = require('./api.js')
+  const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../lib/get-form-fields.js')
 const store = require('./store')
@@ -45,7 +45,7 @@ let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 // const checkForDraw = () => {
 //   for (let i = 0; i < boardArray.length; i++) {
 //     if (boardArray[i] !== '') {
-//       console.log('draw')
+//       // console.log('draw')
 //       $('draw-bar').text('draw')
 //     }
 //   }
@@ -57,21 +57,21 @@ let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 // const checkForDraw = boardArray => {
 //   if (boardArray.every(bs => bs !== '')) {
-//     console.log('draw')
+//     // console.log('draw')
 //     $('.results').text('Draw')
 //   }
 // }
 
 // const checkForDraw = boardArray => {
 //   if (boardArray.every(isNotEmpty) === true) {
-//     console.log('DRAW WORKS')
+//     // console.log('DRAW WORKS')
 //     $('.results').text('Draw')
 //   }
 // }
 
 const checkForDraw = boardArray => {
   if ((boardArray[0] !== ' ') && (boardArray[1] !== ' ') && (boardArray[2] !== ' ') && (boardArray[3] !== ' ') && (boardArray[4] !== ' ') && (boardArray[5] !== ' ') && (boardArray[6] !== ' ') && (boardArray[7] !== ' ') && (boardArray[8] !== ' ')) {
-    console.log('DRAW WORKS')
+    // console.log('DRAW WORKS')
     $('.draw-bar').html('Draw').show()
     $('.results').hide()
   }
@@ -174,7 +174,7 @@ const checkForWin = boardArray => {
     disableListeners()
   }
   // else if (checkForDraw === true) {
-  //   console.log('DRAW GAME WORKS')
+  //   // console.log('DRAW GAME WORKS')
   //   $('.results').html('draw')
   // }
 }
@@ -184,16 +184,16 @@ const placeMarker = event => {
   const bsId = event.target.id
   const bsNumId = () => bsId.replace('bs', '')
   // const bsNumId = () => Number.parseInt(bsId.replace('bs', ''))
-  // console.log('event target is', event.target)
-  // console.log('bsId is', bsId)
-  // console.log('bsNumId is', bsNumId())
-  // console.log(player + "'s turn'")
-  // console.log('board space click works')
+  // // console.log('event target is', event.target)
+  // // console.log('bsId is', bsId)
+  // // console.log('bsNumId is', bsNumId())
+  // // console.log(player + "'s turn'")
+  // // console.log('board space click works')
   if ((player === 'x') && ($(event.target).text() === '')) {
     $(event.target).html('x')
     $('.results').html('Turn: O')
     sendToBoardArray(bsNumId(), player)
-    console.log('BOARD ARRAY IS', boardArray)
+    // console.log('BOARD ARRAY IS', boardArray)
     checkForDraw(boardArray)
     checkForWin(boardArray)
     onUpdateMove()
@@ -203,7 +203,7 @@ const placeMarker = event => {
     $(event.target).html('o')
     $('.results').html('Turn: X')
     sendToBoardArray(bsNumId(), player)
-    console.log('BOARD ARRAY IS', boardArray)
+    // console.log('BOARD ARRAY IS', boardArray)
     checkForDraw(boardArray)
     checkForWin(boardArray)
     onUpdateMove()
@@ -258,7 +258,7 @@ const onSignUp = event => {
   const form = event.target
   const formData = getFormFields(form)
 
-  console.log('sign up works')
+  // console.log('sign up works')
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -270,7 +270,7 @@ const onSignIn = event => {
   const form = event.target
   const formData = getFormFields(form)
 
-  console.log('sign in works')
+  // console.log('sign in works')
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -282,7 +282,7 @@ const onChangePassword = event => {
   const form = event.target
   const formData = getFormFields(form)
 
-  console.log('change password works')
+  // console.log('change password works')
   api.changePassword(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
@@ -291,7 +291,7 @@ const onChangePassword = event => {
 const onSignOut = event => {
   event.preventDefault()
   // doesn't need formData because there is no data to submit
-  console.log('sign out works')
+  // console.log('sign out works')
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
@@ -299,7 +299,7 @@ const onSignOut = event => {
 
 const onCreateGame = event => {
   event.preventDefault()
-  console.log('create game button works')
+  // console.log('create game button works')
   // boardArray.clear(boardArray)
   $('.bs')
     .html('')
@@ -309,7 +309,7 @@ const onCreateGame = event => {
   // let boardArray = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   // store.game.clear(store.game)
   gameStart()
-  console.log(boardArray)
+  // console.log(boardArray)
   // NEED TO INCLUDE GAME START HERE?
   api.createGame()
     .then(ui.onCreateGameSuccess)
@@ -318,7 +318,7 @@ const onCreateGame = event => {
 
 const onGetAllGames = event => {
   event.preventDefault()
-  console.log('get all games works')
+  // console.log('get all games works')
   api.getAllGames()
     .then(ui.onGetAllGamesSuccess)
     .catch(ui.onGetAllGamesFailure)
@@ -327,7 +327,7 @@ const onGetAllGames = event => {
 // getting a single is not required?
 // const onGetAGame = event => {
 //   event.preventDefault()
-//   console.log('get a game works')
+//   // console.log('get a game works')
 //   api.getAGame()
 //     .then(ui.onGetAGameSuccess)
 //     .catch(ui.onGetAGameFailure)
@@ -337,7 +337,7 @@ const onUpdateMove = event => {
 api.updateMove()
     .then(ui.onUpdateGameSuccess)
     .catch(ui.onUpdateGameFailure)
-  console.log('onUpdateMove works')
+  // console.log('onUpdateMove works')
 }
 
 const addHandlers = event => {
