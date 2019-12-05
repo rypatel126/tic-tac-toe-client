@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe Project</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+
+        <h1>TIC TAC TOE</h1>
+        <p class="instructions">Welcome! </br> This is a rudimentary Tic Tac Toe game designed to be played by a single player.  Please create an account by entering a valid email address and password, then sign in and start a game to play!  You can check the total number of games you have played after you have signed in!</p>
+      <section class="status"></section>
+      <section class="before-auth">
+      <h2>Sign Up</h2>
+        <form id="sign-up">
+          <input type="email" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmamtion">
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      <h2>Sign In</h2>
+        <form id="sign-in">
+          <input type="email" name="credentials[email]" placeholder="Email">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+      <section class="after-auth">
+      <section>
+        <h2>Change Password</h2>
+        <form id="change-password">
+          <input type="password" name="passwords[old]" placeholder="Old Password">
+          <input type="password" name="passwords[new]" placeholder="New Password">
+          <button class="btn btn-primary">Submit</button>
+        </form>
+      <h2>Sign Out</h2>
+      <form id="sign-out">
+      <button class="btn btn-danger">Sign Out</button>
+      </form>
+      <h2>Start Game</h2>
+      <form id="create-game">
+        <button class="btn btn-primary">Start a New Game</button>
+      </form>
+      </section>
+
+      <!-- <form id="get-a-game">
+        <button class="btn btn-primary">Get a game</button>
+        <input type="text" name='game-id' placeholder="Game ID">
+      </form> -->
+      <form id="get-all-games">
+        <button class="btn btn-primary">Total Games Played</button>
+      </form>
+      <section class="game-board">
+      <section class="results" id="status-bar"></section>
+      <section class="draw-bar"></section>
+      <section class="container-fluid">
+        <div class="row h-100 board">
+          <div class="col-4 bs" id="bs0"></div>
+          <div class="col-4 bs" id="bs1"></div>
+          <div class="col-4 bs" id="bs2"></div>
+          <div class="col-4 bs" id="bs3"></div>
+          <div class="col-4 bs" id="bs4"></div>
+          <div class="col-4 bs" id="bs5"></div>
+          <div class="col-4 bs" id="bs6"></div>
+          <div class="col-4 bs" id="bs7"></div>
+          <div class="col-4 bs" id="bs8"></div>
+        </div>
+      </section>
+    </section>
+    </section>
+        <!-- <div class="container">
+          <div class="bs" id="bs0"></div>
+          <div class="bs" id="bs1"></div>
+          <div class="bs" id="bs2"></div>
+          <div class="bs" id="bs3"></div>
+          <div class="bs" id="bs4"></div>
+          <div class="bs" id="bs5"></div>
+          <div class="bs" id="bs6"></div>
+          <div class="bs" id="bs7"></div>
+          <div class="bs" id="bs8"></div>
+        </div> -->
+    </body>
+</html>
